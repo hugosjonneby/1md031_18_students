@@ -1,9 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>DELI-VERY</title>
+        <title>BurgerHeaven</title>
+        <meta charset="utf-8"/>
     </head>
     <body>
-        <h1>Hello World!!!</h1>
+        <main>
+            <h1>Welcome to BurgerHeaven Online</h1>
+            <section>
+                <h3>Select burger</h3>
+                    <p>This is where you execute burger selection </p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>The Fire Burger</th>
+                                <th>Fried Turky burger</th>
+                                <th>A Double w/ Cheese</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="https://as2.ftcdn.net/jpg/02/27/54/13/500_F_227541342_LCSW3PpPX2uaB463mBqIIZteldKLtfg5.jpg" alt="Span" title="Burger 1" width="250"></td>
+                                <td><img src="https://www.rachaelraymag.com/.image/t_share/MTQ5MTcwNjI0NDI4Nzc4OTQ5/fried-egg-topped-turkey-burgers-with-kale-salad-1210.jpg" alt="Span" title="Burger 2" width="250"></td>
+                                <td><img src="https://www.mcdonalds.com/content/dam/usa/nfl/nutrition/items/regular/desktop/t-mcdonalds-Double-Cheeseburger.jpg" alt="Span" title="Burger 2" width="250"></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    <ul>
+                                        <li>It's the hottest burger ever made</li>
+                                        <li>Contains gluten</li>
+                                        <li>Don't taste that grate</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>It's the moste fried burger ever made</li>
+                                        <li>Contains lactose</li>
+                                        <li>Taste like nothing</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>It's the most cheesy burger ever made</li>
+                                        <li>Contains cheese</li>
+                                        <li>Taste like cheese with cheese</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+            </section>
+            <section>
+                <h3>Customer information</h3>
+                    <p>This is where you provide necessary information</p>
+                <h4>Dilivery information:</h4>
+                <section id="contact">
+                    <form>
+                        <p>
+                            <label for="fullname">Full name</label><br>
+                            <input type="text" id="fullname" name="fn" required="required" placeholder="First- and Last name">
+                        </p>
+                        <p>
+                            <label for="email">E-mail</label><br>
+                            <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
+                        </p>
+                        <p>
+                            <label for="street">Street</label><br>
+                            <input type="text" id="street" name="st" placeholder="Street name">
+                        </p>
+                        <p>
+                            <label for="house">House</label><br>
+                            <input type="number" id="house" name="ho" placeholder="House number">
+                        </p>
+                        <p>
+                            <label for="payment">Payment</label><br>
+                            <select id="payment" name="pay">
+                                <option>Swish</option>
+                                <option>Klarna</option>
+                                <option>Credit Card</option>
+                                <option>Paypal</option>
+                                <option>Direct Bank</option>
+                            </select>
+                        </p>
+                        <p>
+                            <input type="radio" id="male" name="gender" value="male">
+                            <label for="male">Male</label><br>
+                            <input type="radio" id="female" name="gender" value="female">
+                            <label for="female">Female</label><br>
+                            <input type="radio" id="binary" name="gender" value="binary">
+                            <label for="binary">Non-binary</label><br>
+                            <input type="radio" id="undisclosed" name="gender" value="undisclosed">
+                            <label for="undisclosed">Undisclosed</label>
+                        </p>
+                        <p>
+                            <button type="submit"><img src="https://estonetech.com/wp-content/uploads/2017/01/send-button-hi.png"alt="Span" title="send" width="50"> Send Info</button>
+                        </p>
+
+                    </form>
+                </section>
+            </section>  
+        </main>
+        <footer>
+            <p>&#169; 2020 Hypothetical Burgers inc. </p>
+        </footer> 
     </body>
 </html>
