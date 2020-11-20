@@ -1,109 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>BurgerHeaven</title>
-        <meta charset="utf-8"/>
-    </head>
-    <body>
-        <main>
-            <h1>Welcome to BurgerHeaven Online</h1>
-            <section>
-                <h3>Select burger</h3>
-                    <p>This is where you execute burger selection </p>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>The Fire Burger</th>
-                                <th>Fried Turky burger</th>
-                                <th>A Double w/ Cheese</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><img src="https://as2.ftcdn.net/jpg/02/27/54/13/500_F_227541342_LCSW3PpPX2uaB463mBqIIZteldKLtfg5.jpg" alt="Span" title="Burger 1" width="250"></td>
-                                <td><img src="https://www.rachaelraymag.com/.image/t_share/MTQ5MTcwNjI0NDI4Nzc4OTQ5/fried-egg-topped-turkey-burgers-with-kale-salad-1210.jpg" alt="Span" title="Burger 2" width="250"></td>
-                                <td><img src="https://www.mcdonalds.com/content/dam/usa/nfl/nutrition/items/regular/desktop/t-mcdonalds-Double-Cheeseburger.jpg" alt="Span" title="Burger 2" width="250"></td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td>
-                                    <ul>
-                                        <li>It's the hottest burger ever made</li>
-                                        <li>Contains gluten</li>
-                                        <li>Don't taste that grate</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <ul>
-                                        <li>It's the moste fried burger ever made</li>
-                                        <li>Contains lactose</li>
-                                        <li>Taste like nothing</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <ul>
-                                        <li>It's the most cheesy burger ever made</li>
-                                        <li>Contains cheese</li>
-                                        <li>Taste like cheese with cheese</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
-            </section>
-            <section>
-                <h3>Customer information</h3>
-                    <p>This is where you provide necessary information</p>
-                <h4>Dilivery information:</h4>
-                <section id="contact">
-                    <form>
-                        <p>
-                            <label for="fullname">Full name</label><br>
-                            <input type="text" id="fullname" name="fn" required="required" placeholder="First- and Last name">
-                        </p>
-                        <p>
-                            <label for="email">E-mail</label><br>
-                            <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
-                        </p>
-                        <p>
-                            <label for="street">Street</label><br>
-                            <input type="text" id="street" name="st" placeholder="Street name">
-                        </p>
-                        <p>
-                            <label for="house">House</label><br>
-                            <input type="number" id="house" name="ho" placeholder="House number">
-                        </p>
-                        <p>
-                            <label for="payment">Payment</label><br>
-                            <select id="payment" name="pay">
-                                <option>Swish</option>
-                                <option>Klarna</option>
-                                <option>Credit Card</option>
-                                <option>Paypal</option>
-                                <option>Direct Bank</option>
-                            </select>
-                        </p>
-                        <p>
-                            <input type="radio" id="male" name="gender" value="male">
-                            <label for="male">Male</label><br>
-                            <input type="radio" id="female" name="gender" value="female">
-                            <label for="female">Female</label><br>
-                            <input type="radio" id="binary" name="gender" value="binary">
-                            <label for="binary">Non-binary</label><br>
-                            <input type="radio" id="undisclosed" name="gender" value="undisclosed">
-                            <label for="undisclosed">Undisclosed</label>
-                        </p>
-                        <p>
-                            <button type="submit"><img src="https://estonetech.com/wp-content/uploads/2017/01/send-button-hi.png"alt="Span" title="send" width="50"> Send Info</button>
-                        </p>
 
-                    </form>
-                </section>
-            </section>  
-        </main>
-        <footer>
-            <p>&#169; 2020 Hypothetical Burgers inc. </p>
-        </footer> 
-    </body>
+<head>
+    <title>BurgerHeaven</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="js/js_script.js" defer></script>
+    <script src="js/vue_script.js" defer></script>
+    <link rel="stylesheet" href="css/deli-very.css">
+</head>
+
+<body>
+    <main>
+        <div id="rubrik1">
+            <h1>Welcome to Kingenskung Burger</h1>
+        </div>
+        <section id="burger">
+            <subsection id="rubrik2">
+                <h3>Select burger</h3>
+                <p>This is where you execute burger selection</p>
+            </subsection>
+            <div id=burgertype>
+                <div v-for="burger in burgers" class=box>
+                    <h4>{{ burger.name}}<h4>
+                            <img v-bind:src="burger.picture">
+                            <ul>
+                                <li>This is the worlds {{burger.tradeMark}} burger ever made</li>
+                                <li>Contains {{burger.calories}} kcal</li>
+                                <li>May contain trace of <span class="improtantInfo" v-if="burger.gluten">gluten</span>
+                                    <span class="improtantInfo" v-else-if="burger.lactose">lactose</span>
+                                    <span class="improtantInfo" v-else="fasle">nothing</span></li>
+                            </ul>
+                            <input v-bind:id="burger.name" type="checkbox" name="labelBurger">
+                            <label for="labelBurger"> I want this</label>
+                </div>
+            </div>
+            <!--<div id = "burgerType">
+
+            </div>-->
+
+            <!--<div class="burgerType">
+                <div class="box a">
+                    <h4>The Fire Burger</h4>
+                    <img src="img/burning_burger.png" alt="Span" title="Burger 1" width="300">
+                    <ul>
+                        <li>It's the hottest burger ever made</li>
+                        <li>Contains <span class="improtantInfo">gluten</span></li>
+                        <li>Dosen't taste that grate</li>
+                    </ul>
+                </div>
+                <div class="box b">
+                    <h4>Fried Turky burger</h4>
+                    <img src="img/cool_burger.png" alt="Span" title="Burger 2" width="300">
+                    <ul>
+                        <li>It's the moste fried burger ever made</li>
+                        <li>Contains <span class="improtantInfo">lactose</span></li>
+                        <li>Taste like nothing</li>
+                    </ul>
+                </div>
+                <div class="box c">
+                    <h4>A Double w/ Cheese</h4>
+                    <img src="img/cheese_burger.png" alt="Span" title="Burger 3" width="300">
+                    <ul>
+                        <li>It's the most cheesy burger ever made</li>
+                        <li>Contains <span class="improtantInfo">cheese</span></li>
+                        <li>Taste like cheese with cheese</li>
+                    </ul>
+                </div>
+            </div>-->
+        </section>
+        <section id="contact">
+            <h3>Customer information</h3>
+            <p>This is where you provide necessary information</p>
+            <h5>Dilivery information:</h5>
+            <form id="orderinfo">
+                <p>
+                    <label for="fullname">Full name</label><br>
+                    <input type="text" id="fullname" name="fn" required="required" placeholder="First- and Last name">
+                </p>
+                <p>
+                    <label for="email">E-mail</label><br>
+                    <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
+                </p>
+                <p>
+                    <label for="payment">Payment</label><br>
+                    <select id="payment" name="pay">
+                        <option>Swish</option>
+                        <option>Klarna</option>
+                        <option>Credit Card</option>
+                        <option>Paypal</option>
+                        <option>Direct Bank</option>
+                    </select>
+                </p>
+                <p>
+                    Gender<br>
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label><br>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label><br>
+                    <input type="radio" id="binary" name="gender" value="binary">
+                    <label for="binary">Non-binary</label><br>
+                    <input type="radio" id="undisclosed" name="gender" value="undisclosed">
+                    <label for="undisclosed">Undisclosed</label>
+                </p>
+            </form>
+            <h5>Where do you want the order:</h5>
+            <div class="view-box">
+                <div id="dots" v-on:click="displayOrder">
+                    <div v-bind:style="{ left: tempTarget.details.x + 'px', top: tempTarget.details.y + 'px'}">
+                        {{tempTarget.key}}
+                    </div>
+                </div>
+            </div>
+            <p>
+                <input id=buttonSend type="button" value="Send Biker" v-on:click="addOrder()">
+            </p>
+            <div id="order">
+
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&#169; 2020 Hugo Sjönneby inc. </p>
+    </footer>
+</body>
+
 </html>
